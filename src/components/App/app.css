@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 60px;
+  background-color: #092D26;
+  border-bottom: 8px solid #0A4B3E;
+}
+
+.item {
+  color: #8AE234FF;
+  cursor: pointer;
+  margin: auto;
+  width: 92px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #8AE234;
+  font-size: 18px;
+  font-family: sans-serif;
+}

@@ -1,0 +1,131 @@
+.container {
+  width: 95vw;
+  height: 386px;
+  margin: 50px 2.5vw;
+}
+
+.section {
+  display: inline-block;
+  height: 100%;
+  width: 18vw;
+  position: relative;
+  border: 5px double darkgreen;
+  left: 80px;
+  top: -92px;
+}
+
+.texto {
+  text-align: justify;
+  margin: 20px auto;
+  width: 95vw;
+}
+
+.ilustracion {
+  display: flex;
+  margin: 20px auto;
+}
+.btnAddons {
+  margin: 0px auto;
+  display: block;
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #6A4BE8;
+  color:#0F0342;
+}
+
+.divItem {
+  border: 1px solid black;
+  margin: 10px auto;
+  width: 100px;
+  text-align: center;
+  background: lightcyan;
+  border-radius: 4px;
+  cursor: no-drop;
+}
+
+span {
+  color: darkblue;
+  padding-left: 3px;
+}
+
+.section2 {
+  display: inline-block;
+  position: relative;
+  height: 386px;
+  width: 60vw;
+  border: 5px double darkgreen;
+  left: 150px;
+  background-image: url('../../images/flores.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+
+  animation: background 15s linear infinite alternate
+}
+
+@keyframes background {
+  0% {
+    background-size: 200%;
+    background-position: center;
+  }
+  20% {
+    background-position: right top;
+  }
+  40% {
+    background-size: 100%;
+    background-position: center;
+  }
+  60% {
+    background-position: left top;
+  }
+  80% {
+    background-position: left -100px;
+  }
+  100% {
+    background-size: 200%;
+    background-position: right -100px;
+  }
+}
+
+
+
+
+/*Cuando entra la transicion*/
+.example-enter {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+/*cuando termina de entrar, en que estado queda*/
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+/*Cuando sale del Dom*/
+.example-leave {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+/*cuando termina de salir en que estado queda*/
+.example-leave.example-leave-active {
+  opacity: 0;
+}
+
+
+.logo {
+  display: flex;
+  animation: logo infinite 10s linear;
+  width: 100px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+@keyframes logo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
