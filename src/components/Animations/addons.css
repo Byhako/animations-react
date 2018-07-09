@@ -2,30 +2,32 @@
   width: 95vw;
   height: 386px;
   margin: 50px 2.5vw;
+  display: flex;
 }
 
 .section {
   display: inline-block;
   height: 100%;
   width: 18vw;
-  position: relative;
   border: 5px double darkgreen;
-  left: 80px;
-  top: -92px;
+  margin-left: 3vw;
 }
 
 .texto {
   text-align: justify;
   margin: 20px auto;
   width: 95vw;
+  font-size: 20px;
+  font-family: sans-serif;
 }
 
 .ilustracion {
   display: flex;
   margin: 20px auto;
 }
+
 .btnAddons {
-  margin: 0px auto;
+  margin: 10px auto 20px auto;
   display: block;
   width: 120px;
   height: 30px;
@@ -35,6 +37,10 @@
   cursor: pointer;
   background-color: #6A4BE8;
   color:#0F0342;
+}
+
+.span1 {
+  color:#3465A4FF;
 }
 
 .divItem {
@@ -47,22 +53,15 @@
   cursor: no-drop;
 }
 
-span {
-  color: darkblue;
-  padding-left: 3px;
-}
-
 .section2 {
   display: inline-block;
-  position: relative;
   height: 386px;
   width: 60vw;
   border: 5px double darkgreen;
-  left: 150px;
   background-image: url('../../images/flores.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
-
+  margin-left: 9vw;
 
   animation: background 15s linear infinite alternate
 }

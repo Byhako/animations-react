@@ -1,0 +1,139 @@
+.containerg {
+  width: 95vw;
+  height: 386px;
+  margin: 50px 2.5vw;
+  display: block;
+}
+
+.texto {
+  text-align: justify;
+  margin: 20px auto;
+  width: 95vw;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.ilustracion {
+  display: flex;
+  margin: 20px auto;
+}
+
+.row {
+  display: flex;
+  height: 70px;
+  width: 90vw;
+  margin: 10px auto;
+  position: relative;
+}
+
+.btngreen {
+  display: block;
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #6A4BE8;
+  color:#0F0342;
+  position: relative;
+  left: 60%;
+}
+
+.box1 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.orange1 {
+  background-color: orange;
+}
+
+.blue1 {
+  background-color: blue;
+}
+
+.green1 {
+  background-color: green;
+}
+
+.labelTweenmax {
+  position: absolute;
+  left: 40%;
+  font-weight: bold;
+}
+
+.box2 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.orange2 {
+  background-color: orange;
+}
+
+.blue2 {
+  background-color: blue;
+}
+
+.green2 {
+  background-color: green;
+}
+
+.mancito {
+  height: 60px;
+  margin-left: 20px;
+}
+
+
+.box3 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+.green3 {
+  background-color: green;
+}
+
+.botoncitos {
+  position: absolute;
+  right: 2vw;
+}
+
+.btncontrol {
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #6A4BE8;
+  color:#0F0342;
+    margin: auto 10px;
+}
+
+.debajo {
+  margin-left: 26vw;
+  width: 200px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 43vw;
+}
+
+.orange4 {
+  background-color: orange;
+}
+
+.blue4 {
+  background-color: blue;
+}
+
+.green4 {
+  background-color: green;
+}

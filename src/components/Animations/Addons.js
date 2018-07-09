@@ -35,6 +35,7 @@ class Addons extends Component {
 
         <div className='section'>
           <ReactCSSTransitionGroup
+            component="div"
             transitionName="logo"
             transitionEnter={false}
             transitionLeave={false}>
@@ -43,9 +44,12 @@ class Addons extends Component {
 
           <button className='btnAddons' onClick={this.handleAdd}>Add Item</button>
           <ReactCSSTransitionGroup
+            component="div"
             transitionName="example"
             transitionEnterTimeout={300}
-            transitionLeaveTimeout={300}>
+            transitionLeaveTimeout={300}
+            transitionEnter={true}
+            transitionLeave={true}>
             {items}
           </ReactCSSTransitionGroup>
         </div>
@@ -64,24 +68,43 @@ class Addons extends Component {
 
           <img className='ilustracion' src={i1}/>
 
-          <p>Se deben configurar algunos props. Con <b>transitionName</b> asignamos 
+          <p>Se deben configurar algunos props. El componente se renderiza por 
+          defecto en una etiqueta <b>span</b> pero puede modificarce diciendo 
+          explicitamente en que tipo de etiqueta queremos que se renderize.
+           Con <b>transitionName</b> asignamos 
           nombre a la animacion. Con <b>transitionEnterTimeout</b> se configura 
           el tiempo, en milisegundos, que tarda la animacion de un elemento que entra al DOM. 
           Con <b>transitionLeaveTimeout</b> Configuramos el tiempo que tada la 
-          animacion de un elemento que sale del DOM.</p>
+          animacion de un elemento que sale del DOM. Las propiedades <b>transitionEnter</b>
+          y <b>transitionLeave</b> nos dicen si configuraremos o no los tiepos de
+          entrada y salida del componente. Por defecto estan en true.</p>
 
           <p>Luego hay que configurar las animaciones en el CSS. Para ello es 
           necesario tener en cuenta 4 estados, que invocamos como 
-          "<span>.nombre</span>-<span>estado</span>"</p>
+          "<span className='span1'>.nombre</span>-<span className='span1'>estado</span>"</p>
 
-         
-          <li>Cuando entra la animacion: <span>.example-enter</span></li>
-          <li>Cuando termina de entrar, en que estado queda:
-              <span>.example-enter.example-enter-active</span></li>
-          <li>Cuando sale del Dom: <span>.example-leave</span></li>
-          <li>Cuando termina de salir en que estado queda: 
-              <span>.example-leave.example-leave-active</span></li>
-          
+         <ul>
+            <li>Cuando entra la animacion: <span className='span1'>.example-enter</span></li>
+            <li>Cuando termina de entrar, en que estado queda:
+                <span className='span1'>.example-enter.example-enter-active</span></li>
+            <li>Cuando sale del Dom: <span className='span1'>.example-leave</span></li>
+            <li>Cuando termina de salir en que estado queda: 
+                <span className='span1'>.example-leave.example-leave-active</span></li>
+          </ul>
+
+          <p><b>ReactTransitionGroup</b> es la base de las animaciones. 
+          Cuando los childs se agregan o eliminan de forma declarativa,
+           se les llama a los ciclos de vida de la animación.</p>
+
+          <ul>
+            <li>componentWillAppear()</li>
+            <li>componentDidAppear()</li>
+            <li>componentWillEnter()</li>
+            <li>componentDidEnter()</li>
+            <li>componentWillLeave()</li>
+            <li>componentDidLeave()</li>
+          </ul>
+
         </div>
 
       </div>

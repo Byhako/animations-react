@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Nav from './Nav'
 import Addons from '../Animations/Addons'
+import GreenSock from '../Animations/GreenSock'
 
 class Home extends Component {
 
@@ -11,8 +12,7 @@ class Home extends Component {
       <div>
         <Nav/>
         {this.props.view == 'addons' && <Addons/>}
-        {this.props.view == 'greenSock' && <p>Hola</p>}
-        {this.props.view == 'gsap' && <p>Hola</p>}
+        {this.props.view == 'greenSock' && <GreenSock/>}
         {this.props.view == 'amime.js' && <p>Hola</p>}
         {this.props.view == 'mo.js' && <p>Hola</p>}
         {this.props.view == 'popmotion' && <p>Hola</p>}

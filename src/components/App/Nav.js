@@ -15,7 +15,6 @@ class Nav extends Component {
       <div className='nav'>
         <div className='item' onClick={this.handleChange('addons')}>Add Ons</div>
         <div className='item' onClick={this.handleChange('greenSock')}>GreenSock</div>
-        <div className='item' onClick={this.handleChange('gsap')}>GSAP</div>
         <div className='item' onClick={this.handleChange('amime.js')}>Anime.js</div>
         <div className='item' onClick={this.handleChange('mo.js')}>Mo.js</div>
         <div className='item' onClick={this.handleChange('popmotion')}>Popmotion</div>
