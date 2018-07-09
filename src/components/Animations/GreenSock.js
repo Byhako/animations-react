@@ -4,9 +4,12 @@ import TweenMax from "gsap/TweenMax"
 import treeShaking from '../../images/treeShaking.png'
 import i2 from '../../images/i2.png'
 import i3 from '../../images/i3.png'
+import i4 from '../../images/i4.png'
+import i5 from '../../images/i5.png'
+import i6 from '../../images/i6.png'
+import i7 from '../../images/i7.png'
 import './greenSock.css'
 
-// var tween = null
 
 class GreenSock extends Component {
 
@@ -33,6 +36,20 @@ class GreenSock extends Component {
     tl.to(".blue4", 1, {x:180, scale:0.2})
   }
 
+  handleAnimate4 = () => {
+    //create a TimelineMax and make it repeat 3 times with 1 second between iterations
+    const tl = new TimelineMax({repeat:3, repeatDelay:1})
+
+    tl.to(".green5", 1, {x:200})
+      //start 1 second after previous tween ends (gap)
+      .to(".orange5", 1, {x:200, scale:0.2}, "+=1")
+      //add a label at the end
+      .addLabel("blueAndRed")
+      //start both of these animations at the same time, at the "greyAndPink" label.
+      .to(".blue5", 1, {x:220, scale:2, y:20}, "blueAndRed")
+      .to(".red5", 1, {x:180, rotation:360}, "blueAndRed")
+  }
+
   componentDidMount () {
     // animo al mancito cuando se carga el componente
     TweenMax.from(".mancito", 3, {x:500, opacity:0.3, scale:2})
@@ -40,13 +57,34 @@ class GreenSock extends Component {
     // al cargar el componente, guardamos en variable una animacion
     this.tween = TweenMax.to(".green3", 4, {x:400, 
       rotation:360, ease:Linear.easeNone, paused:true})
+
+    this.tl = new TimelineMax({paused:true})
+
+    this.tl.to(".green6", 1, {x:200})
+      .to(".orange6", 1, {x:200, scale:0.2}, "+=1")
+      .to(".blue6", 1, {x:200, scale:2, y:20}, "greyAndPink") 
+      .to(".red6", 1, {x:200, rotation:360}, "greyAndPink")
   }
 
+  // control animaciones
   handlePlay = () => { this.tween.play() }
   handlePause = () => { this.tween.pause() }
   handleResume = () => { this.tween.resume() }
   handleReverse = () => { this.tween.reverse() }
   handleRestart = () => { this.tween.restart() }
+
+  // control linea de tiempo
+  handlePlay2 = () => { this.tl.play() }
+  handlePause2 = () => { this.tl.pause() }
+  handleResume2 = () => { this.tl.resume() }
+  handleReverse2 = () => { this.tl.reverse() }
+  handleRestart2 = () => { this.tl.restart() }
+
+  handleRestart3 = () => { this.tl.restart() }
+  handleScale02 = () => { this.tl.restart() }
+  handleScale1 = () => { this.tl.restart() }
+  handleScale4 = () => { this.tl.restart() }
+
 
   render() {
 
@@ -59,7 +97,7 @@ class GreenSock extends Component {
           <div className="box1 blue1"></div>
           <div className="box1 green1"></div>
           <button className='btngreen' onClick={this.handleAnimate1}>Animar</button>
-          <span className='labelTweenmax'>TweenMax.to 2D</span>
+          <span className='label'>TweenMax.to 2D</span>
         </div>
 {/****************************************************************/}
         <div className='row'>
@@ -67,49 +105,101 @@ class GreenSock extends Component {
           <div className="box2 orange2"></div>
           <div className="box2 blue2"></div>
           <button className='btngreen' onClick={this.handleAnimate2}>Animar</button>
-          <span className='labelTweenmax'>TweenMax.to 3D</span>
+          <span className='label'>TweenMax.to 3D</span>
         </div>
 {/****************************************************************/}
         <div className='row'>
           <img className='mancito'
           src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/logo-man.svg"
           />
-          <span className='labelTweenmax'>TweenMax.from()</span>
+          <span className='label'>TweenMax.from()</span>
         </div>
 {/****************************************************************/}
         <div className='row'>
           <div className="box2 green3"></div>
-           <div className='debajo'> Controlando animaciones</div>
+           <div className='label'> Controlando animaciones</div>
           <div className="botoncitos">
             <button className='btncontrol' 
-              onClick={this.handlePlay} id="play">play()
+              onClick={this.handlePlay}>play()
             </button>
             <button className='btncontrol' 
-              onClick={this.handlePause} id="pause">pause()
+              onClick={this.handlePause}>pause()
             </button>
             <button className='btncontrol' 
-              onClick={this.handleResume} id="resume">resume()
+              onClick={this.handleResume}>resume()
             </button>
             <button className='btncontrol' 
-              onClick={this.handleReverse} id="reverse">reverse()
+              onClick={this.handleReverse}>reverse()
             </button>
             <button className='btncontrol' 
-              onClick={this.handleRestart} id="restart">restart()
+              onClick={this.handleRestart}>restart()
             </button>
           </div>
         </div>
 {/****************************************************************/}
         <div className='row'>
-          <div class="box2 green4"></div>
-          <div class="box2 orange4"></div>
-          <div class="box2 blue4"></div>
+          <div className="box2 green4"></div>
+          <div className="box2 orange4"></div>
+          <div className="box2 blue4"></div>
           <button className='btngreen' onClick={this.handleAnimate3}>Animar</button>
-          <span className='labelTweenmax'>Timelines</span>
+          <span className='label'>Timelines</span>
         </div>
 {/****************************************************************/}
+        <div className='row'>
+          <div className="box2 green5"></div>
+          <div className="box2 orange5"></div>
+          <div className="box2 blue5"></div>
+          <div className="box2 red5"></div>
+          <button className='btngreen' onClick={this.handleAnimate4}>Animar</button>
+          <span className='label'>parámetro de posición</span>
+        </div>
+{/****************************************************************/}
+        <div className='row'>
+          <div className="box2 green6"></div>
+          <div className="box2 orange6"></div>
+          <div className="box2 blue6"></div>
+          <div className="box2 red6"></div>
+          <span className='label'>Control línea de tiempo</span>
 
+          <div className="botoncitos">
+            <button className='btncontrol' 
+              onClick={this.handlePlay2}>play()
+            </button>
+            <button className='btncontrol' 
+              onClick={this.handlePause2}>pause()
+            </button>
+            <button className='btncontrol' 
+              onClick={this.handleResume2}>resume()
+            </button>
+            <button className='btncontrol' 
+              onClick={this.handleReverse2}>reverse()
+            </button>
+            <button className='btncontrol' 
+              onClick={this.handleRestart2}>restart()
+            </button>
+          </div>
+        </div>
+{/****************************************************************/}
+        <div className='row'>
 
-
+          <div className="box2 green7"></div>
+          <div className="box2 orange7"></div>
+          <div className="box2 blue7"></div>
+          <div className="box2 red7"></div>
+          <div className="message"></div>
+           
+          <div className="botoncitos">
+            <button className='btncontrol' 
+            onClick={this.handleRestart3}>restart()</button>
+            <button className='btncontrol' 
+            onClick={this.handleScale02}>timeScale(0.2)</button>
+            <button className='btncontrol' 
+            onClick={this.handleScale1}>timeScale(1)</button>
+            <button className='btncontrol' 
+            onClick={this.handleScale4}>timeScale(4)</button>
+          </div>
+        </div>
+{/****************************************************************/}
 
 
       </div>
@@ -117,6 +207,13 @@ class GreenSock extends Component {
 {/*//////////////////////////////////////////////////////////////////////////*/}
 
       <div className='texto'>
+      <p id='importante'> Para controlar una animación, se necesita una 
+      instancia para trabajar. 
+      Los métodos to(), from() y fromTo() devuelven una instancia, 
+      por lo que puede almacenarla como una variable y luego controlarla muy 
+      fácilmente. Estas variables se deben declarar dentro del componente 
+       <span id='componentDidMount'> componentDidMount</span> del ciclo de vida 
+       de React</p>
       <ul>
       <li><b>TweenLite</b> es una herramienta de animación extremadamente 
       rápida, liviana y flexible que sirve como base de la plataforma de 
@@ -252,6 +349,78 @@ class GreenSock extends Component {
       animaciones, llame a myFunction ()")</li>
 
       <img className='ilustracion' src={i3} alt='treeShaking'/>
+
+      <h2>Metodo de encadenamiento</h2>
+
+      <p>Cuando se aplica una misma linea de tiempo a varios elementos
+      pordemos escribirlos todos juntos encadenandolos como:</p>
+
+      <img className='ilustracion' src={i4} alt='treeShaking'/>
+
+      <h2>Control de colocación con el parámetro de posición</h2>
+
+      <p>El secreto para construir secuencias magníficas y precisas es 
+      comprender el parámetro de posición. Este único parámetro súper 
+      flexible controla la ubicación de sus tweens, etiquetas, devoluciones 
+      de llamada, pausas e incluso líneas de tiempo anidadas.</p>
+
+      <img className='ilustracion' src={i5} alt='treeShaking'/>
+
+      <p>Es como un gap, que contorla la secuencia.</p>
+
+      <h2>Control de línea de tiempo</h2>
+
+      <p>Timeline y tweens comparten un conjunto común de métodos de control. 
+      Y dado que la cabeza de reproducción de cualquier animación está 
+      controlada por su línea de tiempo principal, eso significa que pausar 
+      la cabeza de reproducción de una línea de tiempo afecta automáticamente 
+      a todos sus hijos. Saltar a un diferente time() o progress() en una 
+      línea de tiempo y todos los hijos se mostrarán en consecuencia.</p>
+
+      <h3>Propiedades especiales de la línea de tiempo</h3>
+      <p>Las líneas de tiempo también tienen propiedades especiales que 
+      puede pasar opcionalmente al constructor para configurarlas. 
+       opciones más utilizadas de TimelineMax son:</p>
+
+       <ul>
+        <li><b>repeat:</b> el número de veces que se repetirá la animación.</li>
+        <li><b>repeatDelay:</b> la cantidad de tiempo (en segundos) entre repeticiones.</li>
+        <li><b>yoyo:</b> si es verdadero, la reproducción se alternará 
+        hacia adelante y hacia atrás en cada repetición.</li>
+        <li><b>delay:</b> el tiempo (en segundos) antes de que comience la 
+        línea de tiempo</li>
+        <li><b>onComplete:</b> una función para llamar cuando la línea de 
+        tiempo ha terminado de reproducirse</li>
+       </ul>
+
+      <img className='ilustracion' src={i6} alt='treeShaking'/>
+      
+      <h3>Métodos Getter / Setter</h3>
+      
+      <p>Los tweens y las líneas de tiempo no solo comparten callbacks y 
+      métodos de control similares, sino que también tienen métodos comunes 
+      para obtener y establecer propiedades específicas de la animación. 
+      Los métodos getter / setter más comúnmente utilizados son:</p>
+
+      <ul>
+      <li><b>time():</b> la posición local de la cabeza lectora 
+      (la hora actual, en segundos) sin incluir repeticiones o repeatDelays.</li>
+      <li><b>progress():</b> el progreso del tween que es un valor entre 0 y 
+      1 que indica la posición del cabezal de reproducción donde 0 es al 
+      principio, 0.5 está a medio completar y 1 está al final.</li>
+      <li><b>duration():</b> la duración de la animación (en segundos), 
+      sin incluir repeticiones o repeatDelays.</li>
+      <li><b>delay():</b> la demora inicial de la animación (la cantidad de
+       tiempo en segundos antes de que comience la animación).</li>
+      </ul>
+      
+      <p>Estos métodos se pueden usar como setters (al pasar un valor) o 
+      getters (omitiendo todos los argumentos). En las muestras de código 
+      a continuación, observe que el método de duration() se puede usar 
+      exactamente de la misma manera tanto para los tweens como para 
+      la línea de tiempo.</p>
+
+      <img className='ilustracion' src={i7} alt='treeShaking'/>
 
       </div>
 

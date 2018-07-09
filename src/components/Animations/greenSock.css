@@ -1,6 +1,6 @@
 .containerg {
   width: 95vw;
-  height: 386px;
+  height: auto;
   margin: 50px 2.5vw;
   display: block;
 }
@@ -11,6 +11,18 @@
   width: 95vw;
   font-size: 20px;
   font-family: sans-serif;
+}
+
+#componentDidMount {
+  color: purple;
+  font-weight: bold;
+}
+
+#importante {
+  font-size: 24px;
+  font-style: oblique;
+  border: 5px double darkgreen;
+  padding: 5px;
 }
 
 .ilustracion {
@@ -40,64 +52,37 @@
   left: 60%;
 }
 
-.box1 {
+.box1, .box2 {
   display:block;
   width: 50px;
   height: 50px;
   border-radius: 3px;
 }
 
-.orange1 {
+.orange1, .orange2, .orange4, .orange5, .orange6 {
   background-color: orange;
 }
 
-.blue1 {
+.blue1, .blue2, .blue4, .blue5, .blue6 {
   background-color: blue;
 }
 
-.green1 {
+.green1, .green2, .green3, .green4, .green5, .green6 {
   background-color: green;
 }
 
-.labelTweenmax {
+.red5, .red6 {
+  background-color: red;
+}
+.label {
   position: absolute;
   left: 40%;
   font-weight: bold;
 }
 
-.box2 {
-  display:block;
-  width: 50px;
-  height: 50px;
-  border-radius: 3px;
-}
-
-.orange2 {
-  background-color: orange;
-}
-
-.blue2 {
-  background-color: blue;
-}
-
-.green2 {
-  background-color: green;
-}
-
 .mancito {
   height: 60px;
   margin-left: 20px;
-}
-
-
-.box3 {
-  display:block;
-  width: 50px;
-  height: 50px;
-  border-radius: 3px;
-}
-.green3 {
-  background-color: green;
 }
 
 .botoncitos {
@@ -112,28 +97,6 @@
   cursor: pointer;
   background-color: #6A4BE8;
   color:#0F0342;
-    margin: auto 10px;
+  margin: auto 10px;
 }
 
-.debajo {
-  margin-left: 26vw;
-  width: 200px;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 43vw;
-}
-
-.orange4 {
-  background-color: orange;
-}
-
-.blue4 {
-  background-color: blue;
-}
-
-.green4 {
-  background-color: green;
-}
