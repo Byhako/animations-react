@@ -8,6 +8,7 @@ import i4 from '../../images/i4.png'
 import i5 from '../../images/i5.png'
 import i6 from '../../images/i6.png'
 import i7 from '../../images/i7.png'
+import i8 from '../../images/i8.png'
 import './greenSock.css'
 
 
@@ -43,8 +44,6 @@ class GreenSock extends Component {
     tl.to(".green5", 1, {x:200})
       //start 1 second after previous tween ends (gap)
       .to(".orange5", 1, {x:200, scale:0.2}, "+=1")
-      //add a label at the end
-      .addLabel("blueAndRed")
       //start both of these animations at the same time, at the "greyAndPink" label.
       .to(".blue5", 1, {x:220, scale:2, y:20}, "blueAndRed")
       .to(".red5", 1, {x:180, rotation:360}, "blueAndRed")
@@ -58,12 +57,23 @@ class GreenSock extends Component {
     this.tween = TweenMax.to(".green3", 4, {x:400, 
       rotation:360, ease:Linear.easeNone, paused:true})
 
+  // iniciamos linea de tiempo
     this.tl = new TimelineMax({paused:true})
 
     this.tl.to(".green6", 1, {x:200})
       .to(".orange6", 1, {x:200, scale:0.2}, "+=1")
-      .to(".blue6", 1, {x:200, scale:2, y:20}, "greyAndPink") 
-      .to(".red6", 1, {x:200, rotation:360}, "greyAndPink")
+      .to(".blue6", 1, {x:220, scale:2, y:20}, 'labelCualquiera') 
+      .to(".red6", 1, {x:180, rotation:360}, 'labelCualquiera')
+
+  // linea de tiempo, distintas escalas
+    this.tl2 = new TimelineMax({repeat:6, yoyo:true, paused:true})
+
+    this.tl2.to(".green7", 1, {x:200})
+      .to(".orange7", 1, {x:200, scale:0.2})
+      .to(".blue7", 1, {x:220, scale:2, y:20}, "label") 
+      .to(".red7", 1, {x:180, rotation:360}, "label")
+
+    this.showTimeScale()
   }
 
   // control animaciones
@@ -80,10 +90,27 @@ class GreenSock extends Component {
   handleReverse2 = () => { this.tl.reverse() }
   handleRestart2 = () => { this.tl.restart() }
 
-  handleRestart3 = () => { this.tl.restart() }
-  handleScale02 = () => { this.tl.restart() }
-  handleScale1 = () => { this.tl.restart() }
-  handleScale4 = () => { this.tl.restart() }
+  // linea de tiempo, distintas escalas
+  handleRestart3 = () => { 
+    this.tl2.restart()
+    this.showTimeScale()
+  }
+  handleScale02 = () => { 
+    this.tl2.timeScale(0.2)
+    this.showTimeScale()
+  }
+  handleScale1 = () => { 
+    this.tl2.timeScale(1)
+    this.showTimeScale()
+  }
+  handleScale4 = () => { 
+    this.tl2.timeScale(4)
+    this.showTimeScale()
+  }
+  showTimeScale() {
+  // get the current timeScale
+    this.message.innerHTML = "Current timeScale is " +  this.tl2.timeScale() 
+  }
 
 
   render() {
@@ -186,7 +213,10 @@ class GreenSock extends Component {
           <div className="box2 orange7"></div>
           <div className="box2 blue7"></div>
           <div className="box2 red7"></div>
-          <div className="message"></div>
+          <div 
+            ref={el => this.message = el}
+            className="label">
+          </div>
            
           <div className="botoncitos">
             <button className='btncontrol' 
@@ -199,8 +229,6 @@ class GreenSock extends Component {
             onClick={this.handleScale4}>timeScale(4)</button>
           </div>
         </div>
-{/****************************************************************/}
-
 
       </div>
 
@@ -394,7 +422,16 @@ class GreenSock extends Component {
        </ul>
 
       <img className='ilustracion' src={i6} alt='treeShaking'/>
+
+      <p>Si queremos que dos elementos se animen a la vez, podemos pasar un 4° 
+      parametro, una etiqueta, la misma para los elementos que deseamos
+      que se animen al mismo tiempo, por ejemplo:</p>
       
+      <img className='ilustracion' src={i7} alt='treeShaking'/>
+
+      <p>En este caso, como las dos ultimas, blue7 y red7, tienen la misma 
+      etiqueta, su animación comenzara al mismo tiempo.</p>
+
       <h3>Métodos Getter / Setter</h3>
       
       <p>Los tweens y las líneas de tiempo no solo comparten callbacks y 
@@ -420,7 +457,12 @@ class GreenSock extends Component {
       exactamente de la misma manera tanto para los tweens como para 
       la línea de tiempo.</p>
 
-      <img className='ilustracion' src={i7} alt='treeShaking'/>
+      <img className='ilustracion' src={i8} alt='treeShaking'/>
+
+      <h2>MorphSVGPlugin</h2>
+      <p>Una de las herramientas más populares y potentes, MorphSVG hace 
+      que sea fácil transformar una forma de SVG en otra, 
+      ¡independientemente de la cantidad de puntos que tenga cada una!</p>
 
       </div>
 

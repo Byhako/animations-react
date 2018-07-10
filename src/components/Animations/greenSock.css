@@ -59,19 +59,19 @@
   border-radius: 3px;
 }
 
-.orange1, .orange2, .orange4, .orange5, .orange6 {
+.orange1, .orange2, .orange4, .orange5, .orange6, .orange7 {
   background-color: orange;
 }
 
-.blue1, .blue2, .blue4, .blue5, .blue6 {
+.blue1, .blue2, .blue4, .blue5, .blue6, .blue7 {
   background-color: blue;
 }
 
-.green1, .green2, .green3, .green4, .green5, .green6 {
+.green1, .green2, .green3, .green4, .green5, .green6, .green7 {
   background-color: green;
 }
 
-.red5, .red6 {
+.red5, .red6, .red7 {
   background-color: red;
 }
 .label {
@@ -100,3 +100,28 @@
   margin: auto 10px;
 }
 
+
+svg {
+  display: block;
+  margin: 20px auto;
+  width:400px;
+}
+
+#hippo, #elephant, #star{
+  visibility:hidden;
+}
+
+#slider {
+  width:420px;
+  margin:20px auto;
+}
+
+.st0 {
+  fill: #1D1D1D;
+  stroke:#000000;
+  stroke-miterlimit:10;
+}
+
+.st1 {
+  fill:#CCCCCC;
+}
