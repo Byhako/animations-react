@@ -5,6 +5,34 @@
   border-radius: 3px;
 }
 
+.square7, .square8, .square9, .square10 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
 .separadorh3 {
   border-top: 1px dashed;
+}
+
+.subtitulo {
+  color: #A40000;
+  margin: 30px auto;
+  text-decoration: underline;
+}
+
+.gruesito {
+  height: 150px;
+}
+.textInput {
+  display: flex;
+  text-align: center;
+  height: 22px;
+  background-color: lightcyan;
+  border: 5px double darkgreen;
+  border-radius: 3px;
+  font-size: 20px;
+  width: 100px;
+  margin-left: 14vw;
 }
