@@ -12,6 +12,7 @@ import i16 from '../../images/i16.png'
 import i17 from '../../images/i17.png'
 import i18 from '../../images/i18.png'
 import i19 from '../../images/i19.png'
+import i20 from '../../images/i20.png'
 import './animejs.css'
 
 class Animejs extends Component {
@@ -147,6 +148,29 @@ class Animejs extends Component {
       },
       direction: 'alternate',
       loop: true
+    })
+  }
+
+  handleAnimar12 = () => {
+    const unitlessValue = anime({
+      targets: '.square11',
+      translateX: 250,
+      rotate: 180,
+      duration: 5000
+    })
+
+    const specificUnit1 = anime({
+      targets: '.square12',
+      translateX: '250px',
+      rotate: '180deg',
+      duration: 5000
+    })
+
+    const specificUnit2 = anime({
+      targets: '.square13',
+      translateX: '250px',
+      rotate: '1turn',
+      duration: 10000
     })
   }
 
@@ -350,6 +374,50 @@ class Animejs extends Component {
       <b>"reverse"</b> Loop puede tomar un valor numerico entero, que indica
       la cantidad de veces que se repetirá la animación, o si deseamos una 
       animación infinita le pasamos el parámetro "true". </p>
+
+      <h2 className='subtitulo'>UNIDADES DE LOS VALORES</h2>
+
+      <p>Podemos usar distintos tipod de unidades al pasar los valores, y 
+      tambien diversos tipos de valores. Veamos.</p>
+
+{/************************************************************************/}
+      <h3 className='separadorh3'>Unidades</h3>
+
+      <p>Se pueden especificar las unidades que usamos, o pasar valores 
+      adimensionales, caso en el cual usa las unidades por defecto del 
+      navegador, por ejemplo, para una traslación usa pixeles y para una
+      rotación usa grados.</p>
+
+      <img className='ilustracion' src={i20} alt='treeShaking'/>
+
+      <div className='row gruesito'>
+        
+      <div>
+        <div className="square11 green1"></div>
+        <div className="square12 blue1"></div>
+        <div className="square13 orange1"></div>
+      </div>
+
+        <button className='btngreen' onClick={this.handleAnimar12}>Animar</button>
+        <span className='label'>Unidades</span>
+      </div>
+
+{/************************************************************************/}
+      <h3 className='separadorh3'>Unidades Relativas</h3>
+
+      <p> </p>
+
+      <img className='ilustracion' src={i20} alt='treeShaking'/>
+
+      <div className='row gruesito'>
+        
+      <div>
+        <div className="square14 green1"></div>
+      </div>
+
+        <button className='btngreen' onClick={this.handleAnimar13}>Animar</button>
+        <span className='label'>Unidades Reativas</span>
+      </div>
 
       </div>
 
