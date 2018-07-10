@@ -11,6 +11,7 @@
   "author": "Parallelo",
   "license": "MIT",
   "dependencies": {
+    "animejs": "^2.2.0",
     "gsap": "~2.0.1",
     "react": "~16.4.0",
     "react-addons-css-transition-group": "^15.6.2",

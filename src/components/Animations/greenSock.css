@@ -34,8 +34,9 @@
   display: flex;
   height: 70px;
   width: 90vw;
-  margin: 10px auto;
+  margin: 40px auto;
   position: relative;
+  align-items: center;
 }
 
 .btngreen {
@@ -48,7 +49,7 @@
   cursor: pointer;
   background-color: #6A4BE8;
   color:#0F0342;
-  position: relative;
+  position: absolute;
   left: 60%;
 }
 
@@ -74,6 +75,7 @@
 .red5, .red6, .red7 {
   background-color: red;
 }
+
 .label {
   position: absolute;
   left: 40%;
@@ -98,30 +100,4 @@
   background-color: #6A4BE8;
   color:#0F0342;
   margin: auto 10px;
-}
-
-
-svg {
-  display: block;
-  margin: 20px auto;
-  width:400px;
-}
-
-#hippo, #elephant, #star{
-  visibility:hidden;
-}
-
-#slider {
-  width:420px;
-  margin:20px auto;
-}
-
-.st0 {
-  fill: #1D1D1D;
-  stroke:#000000;
-  stroke-miterlimit:10;
-}
-
-.st1 {
-  fill:#CCCCCC;
 }
