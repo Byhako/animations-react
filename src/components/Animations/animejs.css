@@ -12,6 +12,27 @@
   border-radius: 3px;
 }
 
+.square14, .square15, .square16, .square17, .square18, .square19, .square20 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.square21, .square22, .square23, .square24, .square25, .square26, .square27 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.square28, .square29, .square30, .square31, .square32 {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
 .separadorh3 {
   border-top: 1px dashed;
 }
@@ -35,4 +56,12 @@
   font-size: 20px;
   width: 100px;
   margin-left: 14vw;
+}
+
+input[type=range] {
+  position: absolute;
+  right: 28vw;
+  width: 14vw;
+  -webkit-appearance: none;
+  background: #A40000;
 }

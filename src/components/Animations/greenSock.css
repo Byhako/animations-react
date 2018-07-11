@@ -18,7 +18,7 @@
   font-weight: bold;
 }
 
-#importante {
+#importante, #importante2 {
   font-size: 24px;
   font-style: oblique;
   border: 5px double darkgreen;
@@ -50,7 +50,7 @@
   background-color: #6A4BE8;
   color:#0F0342;
   position: absolute;
-  left: 60%;
+  right: 8vw;
 }
 
 .box1, .box2 {
