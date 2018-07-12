@@ -21,6 +21,12 @@ import i25 from '../../images/i25.png'
 import i26 from '../../images/i26.png'
 import i27 from '../../images/i27.png'
 import i28 from '../../images/i28.png'
+import i29 from '../../images/i29.png'
+import i30 from '../../images/i30.png'
+import i31 from '../../images/i31.png'
+import i32 from '../../images/i32.png'
+import i33 from '../../images/i33.png'
+import i34 from '../../images/i34.png'
 import './animejs.css'
 
 class Animejs extends Component {
@@ -85,9 +91,6 @@ class Animejs extends Component {
     })
 
     this.controlLineTime = TLcontrols
-
-    //*************************
-    this.running = false
 
   }
 
@@ -431,7 +434,7 @@ class Animejs extends Component {
         elProgress.innerHTML = 'progress : ' + Math.round(anim.progress) + '%'
       },
       update: function(anim) {
-        elUpdate.innerHTML = 'Time: ' + Math.round(anim.currentTime) + ' ms';
+        elUpdate.innerHTML = 'Time: ' + Math.round(anim.currentTime) + ' ms'
       },
       complete: function(anim) {
         elRun.innerHTML = 'Running: No'
@@ -441,6 +444,32 @@ class Animejs extends Component {
     })
   }
 
+  handleAnimar22 = () => {
+    const path = anime.path('#motionPath path')
+
+    const motionPath = anime({
+      targets: '#motionPath .path1',
+      translateX: path('x'),
+      translateY: path('y'),
+      rotate: path('angle'),
+      easing: 'linear',
+      duration: 4000,
+      loop: true
+    })
+  }
+
+  handleAnimar23 = () => {
+    console.log('bebe')
+    const lineDrawing = anime({
+      targets: '#lineDrawing .lines path',
+      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: 'easeInOutSine',
+      duration: 1500,
+      delay: function(el, i) { return i * 250 },
+      direction: 'alternate',
+      loop: true
+    })
+  }
   render() {
     return (
       <div>
@@ -864,7 +893,7 @@ class Animejs extends Component {
       <p>Veamos el uso de botones play, pause, restart y reverse. Estos son 
       metodos del objeto anime.</p>
 
-      <img className='ilustracion' src={i26} alt='treeShaking'/>
+      <img className='ilustracion' src={i29} alt='treeShaking'/>
 
       <div className='row gruesito'>
         
@@ -898,7 +927,9 @@ class Animejs extends Component {
       <p>En una linea de tiempo, los botones se usan de la misma manera, 
       veamos como se pone la barra de progreso.</p>
 
-      <img className='ilustracion' src={i26} alt='treeShaking'/>
+      <img className='ilustracion' src={i30} alt='treeShaking'/>
+      <img className='ilustracion' src={i31} alt='treeShaking'/>
+      <img className='ilustracion' src={i32} alt='treeShaking'/>
 
       <div className='row gruesito'>
         
@@ -945,7 +976,7 @@ class Animejs extends Component {
       incluso durante el tiempo de delay. <span className='span1'>complete </span>
       Se corre una vez termine la animación.</p>
 
-      <img className='ilustracion' src={i26} alt='treeShaking'/>
+      <img className='ilustracion' src={i33} alt='treeShaking'/>
 
       <div className='row gruesito'>
         
@@ -961,6 +992,57 @@ class Animejs extends Component {
           <p ref={this.completed}>Completed: No</p>
         </span>
       </div>
+
+      <h2 className='subtitulo'>SVG</h2>
+
+      <p>Manipules imagenes SVG.</p>
+
+{/************************************************************************/}
+      <h3 className='separadorh3'>Motion Path</h3>
+
+      <p>Podemos hacer que el moviniento de un elemento siga un camino 
+      definido por una imagen SVG.  <span className='span1'>anime.path </span>
+      retorna una función de la cual podemos obtener las coordenadas X, Y 
+      y los angulos de rotación para le movimiento.</p>
+
+      <img className='ilustracion' src={i34} alt='treeShaking'/>
+
+      <div className='row gruesito'>
+        
+      <div id="motionPath">
+        <div className="motion-path">
+          <div className="path1"></div>
+          <svg width="256" height="112" viewBox="0 0 256 112">
+            <path fill="none" stroke="currentColor" d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z"></path>
+          </svg>
+        </div>
+      </div>
+
+        <button className='btngreen' onClick={this.handleAnimar22}>Animar</button>
+        <span className='label'>Controles</span>
+      </div>
+
+{/************************************************************************/}
+      <h3 className='separadorh3'>Motion Path</h3>
+
+      <div className='row gruesito'>
+
+      <div id="lineDrawing"> <svg viewBox="0 0 280 100">
+      <g fill="none" fillRule="evenodd" stroke="currentColor" className="lines">
+        <path d="M58 80V50.12C57.7 41.6 51.14 35 43 35a15 15 0 0 0 0 30h7.5v15H43a30 30 0 1 1 0-60c16.42 0 29.5 13.23 30 29.89V80H58z" strokeDasharray="316.85528564453125" style={{strokeDashoffset: "316.4px"}}></path>
+        <path d="M73 80V20H58v60h15z" strokeDasharray="150" style={{strokeDashoffset: "150px"}}></path>
+        <path d="M58 80V49.77C58.5 33.23 71.58 20 88 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80H58zm75 0V20h-15v60h15z" strokeDasharray="441.1739501953125" style={{strokeDashoffset: "441.174px"}}></path>
+        <path d="M118 80V49.77C118.5 33.23 131.58 20 148 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80h-15zm-7.5-60a7.5 7.5 0 1 1-7.48 8v-1c.25-3.9 3.5-7 7.48-7z" strokeDasharray="338.3053894042969" style={{strokeDashoffset: "338.305px"}}></path>
+        <path d="M133 65a15 15 0 0 1-15-15v-7.5h-15V50a30 30 0 0 0 30 30V65zm30 15V49.77C163.5 33.23 176.58 20 193 20a30 30 0 0 1 30 30v30h-15V50a15 15 0 0 0-15-15c-8.14 0-14.7 6.6-15 15.12V80h-15z" strokeDasharray="406.8699035644531" style={{strokeDashoffset: "406.87px"}}></path>
+        <path d="M238 65a15 15 0 0 1 0-30c8.1 0 14.63 6.53 15 15h-15v15h30V49.89C267.5 33.23 254.42 20 238 20a30 30 0 0 0 0 60V65z" strokeDasharray="301.8561706542969" style={{strokeDashoffset: "301.856px"}}></path>
+        <path d="M260.48 65a7.5 7.5 0 1 1-7.48 8v-1c.26-3.9 3.5-7 7.48-7z" strokeDasharray="47.128875732421875" style={{strokeDashoffset: "47.1289px"}}></path>
+      </g>
+      </svg> </div>
+
+      </div>
+
+      <button className='btngreen' onClick={this.handleAnimar23}>Animar</button>
+
 
 
 

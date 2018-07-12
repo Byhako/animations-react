@@ -33,6 +33,14 @@
   border-radius: 3px;
 }
 
+.path1 {
+  display:block;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background-color: green;
+}
+
 .separadorh3 {
   border-top: 1px dashed;
 }
