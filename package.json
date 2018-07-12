@@ -13,6 +13,7 @@
   "dependencies": {
     "animejs": "^2.2.0",
     "gsap": "~2.0.1",
+    "popmotion": "^8.3.3",
     "react": "~16.4.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "~16.4.0",
