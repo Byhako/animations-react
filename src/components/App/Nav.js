@@ -15,10 +15,10 @@ class Nav extends Component {
       <div className='nav'>
         <div className='item' onClick={this.handleChange('addons')}>Add Ons</div>
         <div className='item' onClick={this.handleChange('greenSock')}>GreenSock</div>
-        <div className='item' onClick={this.handleChange('amime.js')}>Anime.js</div>
-        <div className='item' onClick={this.handleChange('mo.js')}>Mo.js</div>
+        <div className='item' onClick={this.handleChange('velocity')}>Velocityjs</div>
+        <div className='item' onClick={this.handleChange('amime.js')}>Animejs</div>
         <div className='item' onClick={this.handleChange('popmotion')}>Popmotion</div>
-        <div className='item' onClick={this.handleChange('velocity')}>Velocity</div>
+        <div className='item' onClick={this.handleChange('mo.js')}>Mojs</div>
       </div>
     )
   }

@@ -787,7 +787,7 @@ class Animejs extends Component {
       </div>
 
 {/************************************************************************/}
-      <h3 className='separadorh3'>Keyrames</h3>
+      <h3 className='separadorh3'>Keyframes</h3>
 
       <p>Son grupos de animaciones que se declaran dentro de un array 
       donde cada elemento es un objeto que define los parámetros de una 
@@ -1023,7 +1023,7 @@ class Animejs extends Component {
       </div>
 
 {/************************************************************************/}
-      <h3 className='separadorh3'>Motion Path</h3>
+      <h3 className='separadorh3'>Dibujando lineas</h3>
 
       <div className='row gruesito'>
 
