@@ -35,6 +35,9 @@ class Animejs extends Component {
   update = React.createRef()
   progress = React.createRef()
   completed = React.createRef()
+  controlsProgress = React.createRef()
+  square4 = React.createRef()
+  importante2 = React.createRef()
 
   state = {}
 
@@ -50,7 +53,7 @@ class Animejs extends Component {
     })
 
     // Controles y bara de progreso, linea de tiempo
-    const controlsProgressEl = document.querySelector('.progress')
+    const controlsProgressEl = this.controlsProgress.current
 
     const TLcontrols = anime.timeline({
       direction: 'alternate',
@@ -102,7 +105,6 @@ class Animejs extends Component {
   }
 
   handleAnimar2 = () => {
-    // const domNodeEl = document.querySelector('.square2')
     const domNode = anime({
       targets: this.domNodeEl,
       translateX: 350
@@ -119,7 +121,7 @@ class Animejs extends Component {
   }
 
   handleAnimar4 = () => {
-    const el = document.querySelector('.square4')
+    const el = this.square4.current
 
     const JSarray = anime({
       targets: [el, '.square5', '#square6'],
@@ -136,7 +138,7 @@ class Animejs extends Component {
       round: 1,
       easing: 'linear',
       update: function() {
-        const el = document.querySelector('#importante2')
+        const el = this.importante2.current
         // el.innerHTML = JSON.stringify(obj)
         el.innerHTML = 'charged: '+ obj.charged
       }
@@ -552,7 +554,7 @@ class Animejs extends Component {
       <img className='ilustracion' src={i12} alt='treeShaking'/>
 
       <div className='row'>
-        <div className="square4 green1"></div>
+        <div className="square4 green1" ref={this.square4}></div>
         <div className="square5 blue1"></div>
         <div className="orange1" id='square6'></div>
         <button className='btngreen' onClick={this.handleAnimar4}>Animar</button>
@@ -567,7 +569,7 @@ class Animejs extends Component {
       <img className='ilustracion' src={i13} alt='treeShaking'/>
 
       <div className='row'>
-        <div id='importante2'>charged: 0%</div>
+        <div id='importante2' ref={this.importante2}>charged: 0%</div>
         <button className='btngreen' onClick={this.handleAnimar5}>Animar</button>
         <span className='label'>Objeto de JS</span>
       </div>
@@ -953,7 +955,8 @@ class Animejs extends Component {
             onClick={() => {this.controlLineTime.reverse()}}>reverse
           </button>
         </div>
-        <input className="progress" 
+        <input className="progress"
+          ref={this.controlsProgress}
           step="2" type="range" 
           min="0" max="100" defaultValue="0"
         />

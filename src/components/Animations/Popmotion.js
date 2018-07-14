@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { tween, styler, easing, spring, listen, pointer, value,
-  keyframes, physics, transform, decay } from 'popmotion'
+  keyframes, physics, transform, decay, everyFrame, timeline } from 'popmotion'
 
 import i35 from '../../images/i35.png'
 import i36 from '../../images/i36.png'
@@ -8,6 +8,7 @@ import i37 from '../../images/i37.png'
 import i38 from '../../images/i38.png'
 import i39 from '../../images/i39.png'
 import i40 from '../../images/i40.png'
+import i41 from '../../images/i41.png'
 import './popmotion.css'
 
 class Popmotion extends Component {
@@ -17,6 +18,11 @@ class Popmotion extends Component {
   el3 = React.createRef()
   el4 = React.createRef()
   el5 = React.createRef()
+  balls = React.createRef()
+  modalContainer = React.createRef()
+  modal = React.createRef()
+  modalActions = React.createRef()
+  modalShade = React.createRef()
 
   componentDidMount () {
     // **************************************************************
@@ -162,7 +168,86 @@ class Popmotion extends Component {
         }).start(sliderX)
       })
 
+    // **************************************************************
+    // **********************  TimeLine *****************************
+    // **************************************************************
+    const modalShade = styler(this.modalShade.current)
+    const modalContainer = styler(this.modalContainer.current)
+    const modal = styler(this.modal.current)
+    const modalSections = Array.from(this.modal.current.children).map(styler)
+    const sectionLabels = modalSections.map((s, i) => 'section' + i)
 
+    const tweenUp = (track, duration = 500, yFrom = 100) => ({
+      track,
+      duration,
+      from: { y: yFrom, opacity: 0 },
+      to: { y: 0, opacity: 1 },
+      ease: { y: easing.backOut, opacity: easing.linear }
+    });
+
+    const setStylers = (v) => {
+      if (v.shade !== undefined) modalShade.set('opacity', v.shade)
+      if (v.modal !== undefined) modal.set(v.modal)
+      sectionLabels.forEach((label, i) => {
+        if (v[label] !== undefined) modalSections[i].set(v[label])
+      })
+    }
+
+    const showContainers = () => {
+      modalShade.set('display', 'block')
+      modalContainer.set('display', 'flex')
+    }
+
+    const hideContainers = () => {
+      modalShade.set('display', 'none')
+      modalContainer.set('display', 'none')
+    }
+
+    this.openModal = () => {
+      showContainers();
+      
+      timeline([
+        { track: 'shade', from: 0, to: 1, ease: easing.linear },
+        '-100',
+        tweenUp('modal'),
+        '-200',
+        [...modalSections.map((s, i) => tweenUp(sectionLabels[i], 300, 50)), 50]
+      ]).start(setStylers);
+    }
+
+    this.cancelModal = () => {
+      timeline([
+        {
+          track: 'modal',
+          duration: 1000,
+          from: { y: 0, opacity: 1 },
+          to: { y: 100, opacity: 0 },
+          ease: { y: easing.easeIn, opacity: easing.linear }
+        },
+        '-100',
+        { track: 'shade', from: 1, to: 0, ease: easing.linear, duration: 200 }
+      ]).start({
+        update: setStylers,
+        complete: hideContainers
+      })
+    }
+
+    this.okModal = () => {
+      timeline([
+        {
+          track: 'modal',
+          duration: 1000,
+          from: { y: 0, opacity: 1 },
+          to: { y: -200, opacity: 0 },
+          ease: { y: easing.easeOut, opacity: easing.linear }
+        },
+        '-100',
+        { track: 'shade', from: 1, to: 0, ease: easing.linear, duration: 300 }
+      ]).start({
+        update: setStylers,
+        complete: hideContainers
+      })
+    }
 
 
   }
@@ -203,6 +288,25 @@ class Popmotion extends Component {
       //times: [0, 0.2, 0.5, 0.6, 1]
     }).start(divStyler.set)
   }
+
+  animar3 = () => {
+    const container = this.balls.current
+
+    const ballStylers = Array
+      .from(container.childNodes)
+      .map(styler)
+
+    const distance = 100
+
+    everyFrame()
+      .start((timestamp) => ballStylers.map((thisStyler, i) => {
+        thisStyler.set('y', distance * Math.sin(0.004 * timestamp + (i * 0.5)))
+    }))
+  }
+
+  animar4 = () => { this.openModal() }
+  cancelModal = () => { this.cancelModal() }
+  okModal = () => { this.okModal() }
 
   render() {
     return (
@@ -377,18 +481,40 @@ class Popmotion extends Component {
 
        <p>Dispara una vez cada fotograma con el último framestamp. </p>
 
-      <img className='ilustracion' src={i39} alt='treeShaking'/>
+      <img className='ilustracion' src={i41} alt='treeShaking'/>
 
-      <div className='row alto piso'>
-        <div class="balls">
-          <div class="ball"></div>
-          <div class="ball"></div>
-          <div class="ball"></div>
-          <div class="ball"></div>
+      <div className='row alto contenedor'>
+        <div className="balls" ref={this.balls}>
+          <div className="ball green1 b1"></div>
+          <div className="ball blue1 b2"></div>
+          <div className="ball orange1 b3"></div>
+          <div className="ball red5 b4" ></div>
         </div>
+        <button className='btngreen frame' onClick={this.animar3}>Animar</button>
+
       </div>
 
+{/************************************************************************/}
+      <h3 className='separadorh3'>Lineas de tiempo</h3>
 
+       <p>Secuencias complicadas de tweens con una matriz simple. </p>
+
+      <div className='row'>
+        <button className='btngreen' onClick={this.animar4}>Abrir Modal</button>
+      </div>
+
+      <div className="modal-shade" ref={this.modalShade}></div>
+      <div className="modal-container" ref={this.modalContainer}>
+        <div className="modal" ref={this.modal}>
+          <h1 className='h1'> ¡Presta atención! </h1>
+             <p> Es una broma, este diálogo es exclusivamente para fines de 
+              demostración.</p>
+          <div className="modal-actions" ref={this.modalActions}>
+            <button className="modal-cancel" onClick={this.cancelModal}>Cancel</button>
+            <button className="modal-ok" onClick={this.okModal}>Ok!</button>
+          </div>
+        </div>
+      </div>
 
 
 
