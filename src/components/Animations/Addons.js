@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import cheet from 'cheet.js'
 
 import i1 from '../../images/i1.png'
 import react from '../../images/react.png'
 import './addons.css'
 
+
+
 class Addons extends Component {
+
+  overlayEl = React.createRef()
+  modalEl = React.createRef()
 
   state = {items: ['hello', 'world', 'click', 'me']}
 
@@ -22,6 +28,13 @@ class Addons extends Component {
     this.setState({items: newItems})
   }
 
+  handleHideModal = () => {
+    const elOverlay = this.overlayEl.current
+    const elModal = this.modalEl.current
+    elModal.style.animation = 'modalOut 0.8s forwards'
+    elOverlay.classList.remove('active')
+  }
+
   render() {
     const items = this.state.items.map((item, i) => (
       <div className='divItem' key={item} onClick={() => this.handleRemove(i)}>
@@ -30,35 +43,59 @@ class Addons extends Component {
     ))
 
     return (
-      <div>
-      <div className='container'>
+      <div className='inicio'>
 
-        <div className='section'>
-          <ReactCSSTransitionGroup
-            component="div"
-            transitionName="logo"
-            transitionEnter={false}
-            transitionLeave={false}>
-            <img className='logo' src={react} />
-          </ReactCSSTransitionGroup>
+      <div className='overlay' ref={this.overlayEl}>
+        <div className='modal' ref={this.modalEl}>
+          <h1>Animaciones React</h1>
+          <p>Ahora podemos ver una ventana como un modal muy cool.</p>
+          <p>Es genial, verdad?</p>
 
-          <button className='btnAddons' onClick={this.handleAdd}>Add Item</button>
-          <ReactCSSTransitionGroup
-            component="div"
-            transitionName="example"
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={300}
-            transitionEnter={true}
-            transitionLeave={true}>
-            {items}
-          </ReactCSSTransitionGroup>
-        </div>
-
-        <div className='section2'>
+          <div className='modal-buttons'>
+            <button className='btn primary' 
+              onClick={this.handleHideModal}>Si, me gusto.
+            </button>
+            <button className='btn second'
+              onClick={this.handleHideModal}>No, :(
+            </button>
+          </div>
 
         </div>
-        </div>
+      </div>
 
+      <div className='wrapper'>
+
+        <div className='container'>
+          {cheet('r u b e n', () => {            
+            const elOverlay = this.overlayEl.current
+            const elModal = this.modalEl.current
+            elModal.style.animation = 'modalIn 1s forwards'
+            elOverlay.classList.add('active')
+          })}
+
+          <div className='section'>
+            <ReactCSSTransitionGroup
+              component="div"
+              transitionName="logo"
+              transitionEnter={false}
+              transitionLeave={false}>
+              <img className='logo' src={react} />
+            </ReactCSSTransitionGroup>
+
+            <button className='btnAddons' onClick={this.handleAdd}>Add Item</button>
+            <ReactCSSTransitionGroup
+              component="div"
+              transitionName="example"
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={300}
+              transitionEnter={true}
+              transitionLeave={true}>
+              {items}
+            </ReactCSSTransitionGroup>
+          </div>
+
+          <div className='section2'> </div>
+        </div>
 
         <div className='texto'>
           <p><b>ReactCSSTransitionGroup</b> es una API de alto nivel basada en 
@@ -107,6 +144,7 @@ class Addons extends Component {
 
         </div>
 
+      </div>
       </div>
     )
   }
